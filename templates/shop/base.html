@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html ln="ru">
+
+    <head>
+        <meta charset="utf-8"/>
+
+        <title>{% block title %}My shop{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Owl Carusel -->
+
+        <link rel="stylesheet" href={% static 'libs/owlcarusel/assets/owl.carousel.min.css' %}>
+        <link rel="stylesheet" href={% static 'libs/owlcarusel/assets/owl.theme.default.css' %}>
+        <link rel="stylesheet" href={% static 'css/style.css' %}>
+    </head>
+
+    <body>
+    <div id="head-content">
+    <!-- HEADER -->
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom head-name">
+
+            <a href="{% url 'shop:index' %}" class="mr-md-auto"><p class="my-0 title">Furniture Store</p></a>
+
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="/" class="p-2 text-dark">Товары</a>
+                <a class="p-2 text-dark" href="#">Доставка</a>
+                <a class="p-2 text-dark" href="#">Контакты</a>
+                <a class="p-2 text-dark" href="#">Сборка</a>
+            </nav>
+
+            <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        Your cart:
+                        <a href="{% url "cart:cart_detail" %}">
+                            {{ total_items }} item{{ total_items|pluralize }},
+                            ${{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Your cart is empty.
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+        </div>
+    <!-- /HEADER -->
+
+    <!-- vertical menu -->
+        <div id="vertical-menu">
+            <ul>
+                <li class="vertical-item" id="first">
+                    <a class="menu-caret">Гостиная</a>
+                    <ul>
+                        <li>
+                            <a>Диваны</a>
+                                <a class="liInLi">Диваны</a>
+                                <a class="liInLi">Диваны</a>
+                        </li>
+                        <li><a>Матрасы</a></li>
+                        <li><a>Кресла</a></li>
+                        <li><a>Шкафы</a></li>
+                    </ul>
+                </li>
+                <li class="vertical-item" >
+                    <a class="menu-caret">Спальня</a>
+                    <ul>
+                        <li><a>Диваны</a></li>
+                        <li><a>Матрасы</a></li>
+                        <li><a>Кресла</a></li>
+                        <li><a>Шкафы</a></li>
+                    </ul>
+                </li>
+                <li class="vertical-item" ><a>Кухня и столовая</a></li>
+                <li class="vertical-item" ><a>Домашний офис</a></li>
+                <li class="vertical-item" ><a>Прихожая</a></li>
+                <li class="vertical-item" ><a>Шкафы и хранение</a></li>
+            </ul>
+        </div>
+    <!-- /vertical menuм -->
+
+
+        {% block content %}
+        {% endblock %}
+    <script type="text/javascript" src={% static 'libs/jquery/jquery-3.5.1.min.js' %}></script>
+    <script type="text/javascript" src={% static 'libs/owlcarusel/owl.carousel.js' %}></script>
+    <script type="text/javascript" src={% static 'js/script.js' %}></script>
+
+    </div>
+
+
+    </body>
+</html>

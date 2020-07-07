@@ -1,0 +1,79 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+
+    <!-- SIDE BAR -->
+        <div id="main-sidebar">
+            <ul>
+                {% for c in categories %}
+                    <a href="{{ c.get_absolute_url }}">
+                        <li><p>{{ c.name }} <span id="arrow">&#10148;</span></p></li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    <!-- /SIDE BAR -->
+
+    <!-- SLIDER -->
+    {% include "shop/include/slider.html" %}
+    {% block slider %}
+    {% endblock %}
+    <!-- /SLIDER -->
+
+    <div style="height: 150px;">
+        </div>
+
+    <!-- hot-product -->
+
+    {% include "shop/include/hits_sales.html" %}
+    {% block sales %}
+    {% endblock %}
+
+
+
+
+    <!-- /hot-product -->
+
+    <!-- product-room -->
+
+
+        <div id="product-room">
+
+            <a class="room-img"><div class="rooms-blok" id="left-blok">
+                <img style="width: 100%; height: 100%;" src="http://tpointegral.ru/images/products/1874-008-1.jpg">
+                <p>Мебель для дома</p>
+            </div></a>
+
+            <div class="rooms-blok" id="right-blok">
+
+                <div class="rooms-row">
+                    <a class="room-img"><div>
+                        <img style="width: 100%; height: 100%;" src="https://vestnikao.ru/wp-content/uploads/2020/05/pryamaya-kuhnya-57.jpg">
+                        <p>Мебель для кухни</p>
+                        </div></a>
+                    <a class="room-img"><div>
+                        <img style="width: 100%; height: 100%;" src="https://april-dm.ru/wp-content/uploads/2019/04/17205371_3.jpg">
+                        <p>Мебель для дачи</p>
+                        </div></a>
+                </div>
+                <div class="rooms-row">
+                    <a class="room-img"><div>
+                        <img style="width: 100%; height: 100%;" src="static/img/%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F_cut-photo.ru.jpg">
+                        <p>Мебель для детской</p>
+                        </div></a>
+                    <a class="room-img"><div>
+                        <img style="width: 100%; height: 100%;" src="static/img/%D0%BE%D1%84%D0%B8%D1%81.jpg">
+                        <p>Домашний кабинет</p>
+                        </div></a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- /product-room -->
+
+{% endblock %}

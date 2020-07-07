@@ -1,0 +1,128 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if product %}
+        {{ product.name }}
+    {% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+    <!--<div class="product-detail">
+        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ product.name }}</h1>
+        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+        <p class="price">${{ product.price }}</p>
+        {{ product.description|linebreaks }}
+    </div>-->
+
+    <div id=Content>
+        <h1>{{ product.name }}</h1>
+        <div id="left">
+            <div class="slider-detail">
+                <input type="radio" name="slide_switch" id="id1"/>
+	           <label for="id1">
+                   <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+	           </label>
+                <img src="static\images\ExampleOfDetail.jpg"/>
+
+                <input type="radio" name="slide_switch" id="id2" checked="checked"/>
+                <label for="id2">
+                    <img src="static\images\ExampleOfDetail2.jpg" width="100"/>
+                </label>
+	           <img src="static\images\ExampleOfDetail2.jpg"/>
+
+                <input type="radio" name="slide_switch" id="id3"/>
+	            <label for="id3">
+	                 <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+	            </label>
+	            <img src="static\images\ExampleOfDetail.jpg"/>
+
+	           <input type="radio" name="slide_switch" id="id4"/>
+	           <label for="id4">
+		               <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+	           </label>
+	           <img src="static\images\ExampleOfDetail.jpg"/>
+
+	           <input type="radio" name="slide_switch" id="id5"/>
+	           <label for="id5">
+		                <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+	           </label>
+	           <img src="static\images\ExampleOfDetail.jpg"/>
+            </div>
+
+            <p id="TitleOfDefinition"> Описание товара:</p>
+
+            <div id="Description">
+                <p>
+                  Кровать с подъемным механизмом Элегия ПМ отлично дополнит интерьер вашей
+                  спальни. Высокое изголовье декорировано мягкой стеганой вставкой из экокожи,
+                  а по краям отделано резными элементами.
+                </p>
+                <p>
+                  В комплект входит основание с подъемным механизмом и деревянными
+                  ламелями. Дно ниш выполнено из ДВП.
+                </p>
+                <p>
+                  Максимальная нагрузка на спальное место с учетом матраса: 300 кг.
+                </p>
+                <p>
+                  Полезная высота короба для белья: 260 мм.
+                </p>
+          </div>
+    </div>
+
+    <div id="right">
+      <div id="Price">
+        <span id="SmallTextForPrice">БЫСТРАЯ ДОСТАВКА</span>
+        <p>{{ product.price }} &#8381;</p>
+      </div>
+      <div id="Buy">
+        <!--<a href="#" class="orange">Купить</a>-->
+
+          <form action="{% url "cart:cart_add" product.id %}" method="post">
+              {{ cart_product_form }}
+              {% csrf_token %}
+              <input type="submit" value="Add to cart">
+          </form>
+
+      </div>
+      <div id="SpeedOfDelivery">
+          <p>Доставим <br> в течение 10 дней</p>
+      </div>
+      <div id="Characters">
+        <p>Характеристики:</p>
+        <table>
+          <tr><th>Габариты (ВхШхГ)</th><td>940x1680x2060 мм</td></tr>
+          <tr><th>Размер спального места</th><td>160х200 см</td></tr>
+          <tr><th>Стиль</th><td>Современный</td></tr>
+          <tr><th>Основание</th><td>Ортопедическое</td></tr>
+          <tr><th>Материал</th><td>ЛДСП,МДФ,Экокожа</td></tr>
+          <tr><th>Вес изделия в упаковке</th><td>110 кг</td></tr>
+          <tr><th>Объем упаковки</th><td>0.445 м3</td></tr>
+          <tr><th>Количество упаковок</th><td>5 шт.</td></tr>
+          <tr><th>Гарантия</th><td>18 месяцев</td></tr>
+        </table>
+      </div>
+
+      <div id="PaymentMethod">
+        <p id="TitleOfPayment"> Способы оплаты:<p>
+        <div id="Cash">
+          <img src="static/images/cash.svg" alt="" align="middle">
+          <p>Наличными <br> курьеру</p>
+        </div>
+        <div id="Cash">
+          <img src="static/images/cashless.svg" alt="" align="middle">
+          <p>Безналичный <br> расчет</p>
+        </div>
+        <div id="Cash">
+          <img src="static/images/credit-card.svg" alt="" align="middle">
+          <p>Банковская <br> карта</p>
+        </div>
+        <div id="Cash">
+          <img src="static/images/credit.svg" alt="" align="middle">
+          <p>Кредит</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+{% endblock %}
