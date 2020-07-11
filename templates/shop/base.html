@@ -8,6 +8,10 @@
         <title>{% block title %}My shop{% endblock %}</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
         <!-- Owl Carusel -->
 
         <link rel="stylesheet" href={% static 'libs/owlcarusel/assets/owl.carousel.min.css' %}>
@@ -20,7 +24,7 @@
     <!-- HEADER -->
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom head-name">
 
-            <a href="{% url 'shop:index' %}" class="mr-md-auto"><p class="my-0 title">Furniture Store</p></a>
+            <a style="text-decoration: none; color: #434241" href="{% url 'shop:index' %}" class="mr-md-auto"><p class="my-0 title">Furniture Store</p></a>
 
             <nav class="my-2 my-md-0 mr-md-3">
                 <a href="/" class="p-2 text-dark">Товары</a>
@@ -32,13 +36,14 @@
             <div class="cart">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
-                        Your cart:
-                        <a href="{% url "cart:cart_detail" %}">
-                            {{ total_items }} item{{ total_items|pluralize }},
-                            ${{ cart.get_total_price }}
+
+                        <a class="orange-cart" href="{% url "cart:cart_detail" %}">
+                            {{ total_items }} {{ total_items|pluralize }}
                         </a>
                     {% else %}
-                        Your cart is empty.
+                        <a class="orange-cart" href="{% url "cart:cart_detail" %}">
+                            0
+                        </a>
                     {% endif %}
                 {% endwith %}
             </div>
@@ -82,12 +87,39 @@
 
         {% block content %}
         {% endblock %}
+
+
     <script type="text/javascript" src={% static 'libs/jquery/jquery-3.5.1.min.js' %}></script>
     <script type="text/javascript" src={% static 'libs/owlcarusel/owl.carousel.js' %}></script>
     <script type="text/javascript" src={% static 'js/script.js' %}></script>
 
     </div>
 
+    <footer class="text-muted" style="width: 100%">
+          <div class="container">
+            <div class="aboutUs">
+              <p id="TitleShop">О компании</p>
+              <p> Мы занимаемся мебелью с 2012 года.<br> И знаем, что Вы хотите.<p>
+              <p id="EndOfTextInFuture"> ООО "Интерьер мебель" <br>ИНН:**************** <br> ОРГН:*************</p>
+            </div>
+            <div class="footer-map">
+              <p> Нас просто найти <p>
+                  <a href="https://yandex.ru/maps/?um=constructor%3A190d8fd5637439e6eb643b8047e8a3f3183fd1e99b81b59a515891b267462153&amp;source=constructorStatic" target="_blank">
+                    <img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A190d8fd5637439e6eb643b8047e8a3f3183fd1e99b81b59a515891b267462153&amp;width=320&amp;height=240&amp;lang=ru_RU" alt=""  />
+                  </a>
+            </div>
+            <div id="Contacts">
+              <p id="TitleOfFooters">Контакты</p>
+              <p> Кстати, нам легко дозвониться: </p>
+              <p id="PhoneNumber">8 (965) 700-99-11</p>
+              <p> Также Вы можете найти наш магазин по адресу:</p>
+              <p id="Adress">
+                г. Калуга, ул. Гагарина, д.6, кв.21
+              </p>
+              <p id="Copyrigth">ООО"Интерьер Мебель" <br> &#169; Все права защищены</p>
+            </div>
+          </div>
+        </footer>
 
     </body>
 </html>

@@ -14,39 +14,39 @@
         {{ product.description|linebreaks }}
     </div>-->
 
-    <div id=Content>
+    <div class="filling" id="Content" >
         <h1>{{ product.name }}</h1>
         <div id="left">
             <div class="slider-detail">
                 <input type="radio" name="slide_switch" id="id1"/>
 	           <label for="id1">
-                   <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+                   <img src="{{ product.image.url}}" width="100"/>
 	           </label>
-                <img src="static\images\ExampleOfDetail.jpg"/>
+                <img src="{{ product.image.url}}"/>
 
                 <input type="radio" name="slide_switch" id="id2" checked="checked"/>
                 <label for="id2">
-                    <img src="static\images\ExampleOfDetail2.jpg" width="100"/>
+                    <img src="{{ product.image.url}}" width="100"/>
                 </label>
-	           <img src="static\images\ExampleOfDetail2.jpg"/>
+	           <img src="{{ product.image.url}}"/>
 
                 <input type="radio" name="slide_switch" id="id3"/>
 	            <label for="id3">
-	                 <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+	                 <img src="{{ product.image.url}}" width="100"/>
 	            </label>
-	            <img src="static\images\ExampleOfDetail.jpg"/>
+	            <img src="{{ product.image.url}}"/>
 
 	           <input type="radio" name="slide_switch" id="id4"/>
 	           <label for="id4">
-		               <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+		               <img src="{{ product.image.url}}" width="100"/>
 	           </label>
-	           <img src="static\images\ExampleOfDetail.jpg"/>
+	           <img src="{{ product.image.url}}"/>
 
 	           <input type="radio" name="slide_switch" id="id5"/>
 	           <label for="id5">
-		                <img src="static\images\ExampleOfDetail.jpg" width="100"/>
+		                <img src="{{ product.image.url}}" width="100"/>
 	           </label>
-	           <img src="static\images\ExampleOfDetail.jpg"/>
+	           <img src="{{ product.image.url}}"/>
             </div>
 
             <p id="TitleOfDefinition"> Описание товара:</p>
@@ -83,6 +83,34 @@
               {% csrf_token %}
               <input type="submit" value="Add to cart">
           </form>
+
+          <!--<form action="/cart/add/{{ product.id }}" method="post">
+              <tr><th><label for="id_quantity">Quantity:</label></th><td><select id="id_quantity" name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                </select>
+                  <input id="id_update" name="update" type="hidden" value="False" /></td></tr>
+                    {% csrf_token %}
+                    <input type="submit" value="Add to cart">
+          </form>-->
 
       </div>
       <div id="SpeedOfDelivery">
@@ -124,5 +152,6 @@
       </div>
     </div>
     </div>
+
 
 {% endblock %}

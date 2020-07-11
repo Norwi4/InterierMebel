@@ -5,51 +5,68 @@
 {% endblock %}
 {% block content %}
 
+
+
+
+
+
     <h1>Корзина</h1>
-    <table class="cart">
-        <thead>
-        <tr style="width: 100%;">
-            <th>Image</th>
-            <th>Product</th>
-            <th>Количество</th>
-            <th>Remove</th>
-            <th>Unit price</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
+    {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+            <table class="cart"  style="width: 100%; min-height: 500px">
+                <thead>
                 <tr>
-                    <td>
-                        <a href="{{ product.get_absolute_url }}">
-                            <img style="height: 100px; width: 100px" src="
-                                {% if product.image %}
-                                    {{ product.image.url }}
-                                {% else %}
-                                    {% static "img/no_image.png" %}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url "cart:cart_remove" product.id%}">Удалить</a></td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
+                    <th></th>
+                    <th>Товар</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Стоймость</th>
+                    <th>Удалить</th>
                 </tr>
-            {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
-        <a href="{% url "shop:index" %}" class="button light">Продолжить покупки</a>
-        <a href="{% url "orders:order_create" %}" class="button">
-            Checkout
-        </a>
-    </p>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <tr>
+                            <td>
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img style="height: 100px; width: 100px" src="
+                                        {% if product.image %}
+                                            {{ product.image.url }}
+                                        {% else %}
+                                            {% static "img/no_image.png" %}
+                                        {% endif %}">
+                                </a>
+                            </td>
+                            <td>{{ product.name }}</td>
+                            <td>
+                                {{ product.quantity }}
+                            </td>
+                            <td class="num">${{ item.price }}</td>
+                            <td class="num">${{ item.total_price }}</td>
+                            <td><a href="{% url "cart:cart_remove" product.id%}">Удалить</a></td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class="total">
+                    <td>Товаров на сумму</td>
+                    <td colspan="4"></td>
+                    <td class="num">${{ cart.get_total_price }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="text-right" style="margin-bottom: 50px;">
+                <a href="{% url "shop:index" %}" class="orange">Продолжить покупки</a>
+                <a href="{% url "orders:order_create" %}" class="orange">Оформить заказ</a>
+            </p>
+
+        {% else %}
+            <div style="min-height: 500px">
+                <p>Корзина пуста</p>
+            </div>
+            <p class="text-right" style="margin-bottom: 50px;">
+                <a href="{% url "shop:index" %}" class="orange">Начать покупки</a>
+            </p>
+        {% endif %}
+    {% endwith %}
 {% endblock %}

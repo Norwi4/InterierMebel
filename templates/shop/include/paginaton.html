@@ -1,0 +1,21 @@
+{% block pagination %}
+    {% if products.has_other_pages %}
+        <ul class="pagination">
+            {% if products.has_previous %}
+                <li style="font-size: 20px;"><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li style="font-size: 20px;" class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            <span class="page-current">
+                {{ products.number }} of {{ products.paginator.num_pages }}.
+            </span>
+
+            {% if products.has_next %}
+                <li style="font-size: 20px;"><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+            {% else %}
+                <li style="font-size: 20px;" class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

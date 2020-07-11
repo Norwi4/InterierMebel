@@ -7,7 +7,7 @@
 
 
 
-    <div class="product-list">
+    <div class="product-list filling" style="min-height: 1000px">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
 
             <div id="catalog">
@@ -16,12 +16,12 @@
                     <div>
                         <figure>
                             <div class="item-product">
-                                <p id="item-name">Название</p>
+                                <p id="item-name">{{ product.name }}</p>
                                 <div>
                                     <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
 
                                 </div>
-                                <p id="item-price">{{ product.price }}</p>
+                                <p id="item-price">{{ product.price }} &#8381;</p>
 
 
                                 <figcaption>
