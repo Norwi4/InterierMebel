@@ -3,79 +3,26 @@
     <div class="hot-product">
         <p>Хиты продаж</p>
         <div class="owl-carousel owl-theme">
-            <div>
-                <figure>
-                    <div class="item-product">
-                        <p id="item-name">Название</p>
-                        <div style=" max-width: 230px; max-height: 200px; margin: 0 auto">
-                            <img style="height: 80%;width: 80%; margin: 0 auto; margin-top: 20%" src="static/img/31-armchair-png-image.png">
+            {% for hp in hot_product %}
+                <div>
+                    <figure>
+                        <div class="item-product">
+                            <p id="item-name">{{hp.name}}</p>
+                            <div style=" max-width: 230px; max-height: 200px; margin: 0 auto">
+                                <img style="height: 80%;width: 80%; margin: 0 auto; margin-top: 20%" src="{{ hp.image.url }}">
+
+                            </div>
+                            <p id="item-price">{{hp.price}}</p>
+
+
+                            <figcaption>
+                                <p>высота*ширина*глубина</p>
+
+                            </figcaption>
 
                         </div>
-                        <p id="item-price">Цена</p>
-
-
-                        <figcaption>
-                            <p>высота*ширина*глубина</p>
-
-                        </figcaption>
-
-                    </div>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <div class="item-product">
-                        <p id="item-name">Название</p>
-                        <div style=" max-width: 230px; max-height: 200px; margin: 0 auto">
-                            <img style="height: 80%;width: 80%; margin: 0 auto; margin-top: 20%" src="static/img/31-armchair-png-image.png">
-                            <p id="item-price">Цена</p>
-                        </div>
-
-
-                        <figcaption>
-                            <p>высота*ширина*глубина</p>
-
-                        </figcaption>
-
-                    </div>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <div class="item-product">
-                        <p id="item-name">Название</p>
-                        <div style=" max-width: 230px; max-height: 200px; margin: 0 auto">
-                            <img style="height: 80%;width: 80%; margin: 0 auto; margin-top: 20%" src="static/img/31-armchair-png-image.png">
-                            <p id="item-price">Цена</p>
-                        </div>
-
-
-                        <figcaption>
-                            <p>высота*ширина*глубина</p>
-
-                        </figcaption>
-
-                    </div>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <div class="item-product">
-                        <p id="item-name">Название</p>
-                        <div style=" max-width: 230px; max-height: 200px; margin: 0 auto">
-                            <img style="height: 80%;width: 80%; margin: 0 auto; margin-top: 20%" src="static/img/31-armchair-png-image.png">
-                            <p id="item-price">Цена</p>
-                        </div>
-
-
-                        <figcaption>
-                            <p>высота*ширина*глубина</p>
-
-                        </figcaption>
-
-                    </div>
-                </figure>
-            </div>
+                    </figure>
+                </div>
         </div>
     </div>
 

@@ -6,10 +6,14 @@ from .models import Category, Product
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
+    hot_product = Product.objects.filter(hot=True)
     return render(
                   request,
                   'shop/product/index.html',
-                  {'products': products, 'categories': categories})
+                  {'products': products,
+                   'categories': categories,
+                   'hot_product': hot_product,
+                   })
 
 
 def product_list(request, category_slug=None):
